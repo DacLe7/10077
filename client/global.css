@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * EasyPlant inspired color scheme
+   * All colors expressed as HSL values for Tailwind CSS compatibility
+   */
+  :root {
+    /* Main backgrounds - warm cream and ivory tones */
+    --background: 35 25% 98%; /* Warm ivory */
+    --background-secondary: 25 35% 92%; /* Warm beige */
+    --foreground: 20 14% 8%; /* Deep brown */
+
+    /* Card and surface colors */
+    --card: 0 0% 100%; /* Pure white */
+    --card-foreground: 20 14% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14% 8%;
+
+    /* Primary warm amber/gold */
+    --primary: 35 84% 45%; /* Rich amber */
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary warm copper */
+    --secondary: 15 65% 35%; /* Warm copper */
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted colors */
+    --muted: 25 35% 92%; /* Background secondary */
+    --muted-foreground: 25 8% 45%; /* Warm gray */
+
+    /* Accent colors */
+    --accent: 35 84% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders and inputs */
+    --border: 30 20% 88%; /* Warm border */
+    --input: 30 20% 88%;
+    --ring: 35 84% 45%;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
