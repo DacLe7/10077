@@ -15,8 +15,26 @@ export default function ProductGrid() {
   const { toast } = useToast();
   const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start", loop: true });
 
-  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+  // Scroll 4 slides at a time
+  // Scroll 4 slides at a time, with looping
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) {
+      const total = emblaApi.scrollSnapList().length;
+      const current = emblaApi.selectedScrollSnap();
+      let target = current - 4;
+      if (target < 0) target = total + target;
+      emblaApi.scrollTo(target);
+    }
+  }, [emblaApi]);
+  const scrollNext = useCallback(() => {
+    if (emblaApi) {
+      const total = emblaApi.scrollSnapList().length;
+      const current = emblaApi.selectedScrollSnap();
+      let target = current + 4;
+      if (target >= total) target = target - total;
+      emblaApi.scrollTo(target);
+    }
+  }, [emblaApi]);
 
   const handleAddToCart = (product: any) => {
     addItem({

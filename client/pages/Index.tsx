@@ -64,38 +64,28 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      {/* <Header /> đã được chuyển lên App.tsx, tránh lặp lại */}
       <HeroSection />
       <SocialProofSection />
       <ProductGrid />
-      
       {/* Phụ Kiện Section */}
       <AccessoriesSection />
-      
       {/* Bộ Quà Tặng Section */}
       <GiftSetSection />
-      
       {/* Hướng Dẫn Section */}
       <GuideSection />
-      
       {/* Đa Dạng Kích Thước Section */}
       <PlantSizesSection />
-      
       {/* Về Chúng Tôi Section */}
       <AboutSection />
-      
       {/* Review Section */}
       <ReviewSection />
-
       {/* Gallery Section */}
       <GallerySection />
-
       {/* FAQ Section */}
       <FAQSection />
-
       {/* Workshop Section */}
       <WorkshopSection />
-
       <Footer />
       {/* Nút chat cũ ở góc phải dưới */}
       {!chatOpen && (

@@ -55,17 +55,17 @@ export default function ProductDetail() {
         <Button variant="ghost" className="mb-6" onClick={() => navigate(-1)}>
           <ArrowLeft className="w-4 h-4 mr-2" /> Quay lại
         </Button>
-        <div className="grid md:grid-cols-2 gap-10 items-start">
+        <div className="flex flex-col md:flex-row gap-10 items-start">
           {/* Image */}
-          <div className="bg-gray-100 rounded-lg p-6 flex items-center justify-center">
+          <div className="bg-gray-100 rounded-lg p-6 flex items-center justify-center w-full md:w-1/2">
             <img
               src={product.image_url}
               alt={product.name}
-              className="w-full max-w-xs h-auto object-contain rounded-lg shadow-md"
+              className="w-full max-w-xs h-auto object-contain rounded-lg shadow-md mx-auto"
             />
           </div>
           {/* Info */}
-          <div>
+          <div className="w-full md:w-1/2">
             <h1 className="text-3xl font-bold mb-2 flex items-center gap-2">
               {product.emoji} {product.name}
             </h1>
@@ -80,7 +80,9 @@ export default function ProductDetail() {
                 </Badge>
               ))}
             </div>
-            <div className="text-2xl font-bold text-primary mb-6">₫299,000</div>
+            <div className="text-2xl font-bold text-primary mb-6">
+              ₫{(299000 * quantity).toLocaleString("vi-VN")}
+            </div>
             
             {/* Quantity Selector */}
             <div className="flex items-center gap-4 mb-6">
