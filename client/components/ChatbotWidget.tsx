@@ -35,7 +35,7 @@ export default function ChatbotWidget() {
     setLoading(true);
     
     try {
-      const res = await fetch('/.netlify/functions/api/chatbot', {
+      const res = await fetch('https://one0077chatbot.onrender.com/api/chatbot', { ... })
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
