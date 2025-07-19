@@ -35,12 +35,12 @@ export default function ChatbotWidget() {
     setLoading(true);
     
     try {
-      const res = await fetch('https://one0077chatbot.onrender.com/api/chatbot', {
+      const res = await fetch('/.netlify/functions/dialogflow-service', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
           message: input,
-          context: 'candle_consultation'
+          sessionId: 'user-session-id'
         }),
       });
       const data = await res.json();
