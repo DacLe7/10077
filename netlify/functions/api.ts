@@ -295,6 +295,18 @@ Trả lời trong 2-3 câu, kèm emoji.`;
 };
 
 export async function handler(event: any) {
+  if (event.httpMethod === 'OPTIONS') {
+    // Handle preflight CORS
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': 'https://one0077.onrender.com',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      },
+      body: '',
+    };
+  }
   if (event.httpMethod === 'POST' && event.path === '/.netlify/functions/api/chatbot') {
     try {
       const { message, sessionId, context } = JSON.parse(event.body || '{}');
@@ -307,11 +319,21 @@ export async function handler(event: any) {
       
       return {
         statusCode: 200,
+        headers: {
+          'Access-Control-Allow-Origin': 'https://one0077.onrender.com',
+          'Access-Control-Allow-Methods': 'POST, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type',
+        },
         body: JSON.stringify(response),
       };
     } catch (e) {
       return {
         statusCode: 500,
+        headers: {
+          'Access-Control-Allow-Origin': 'https://one0077.onrender.com',
+          'Access-Control-Allow-Methods': 'POST, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type',
+        },
         body: JSON.stringify({ 
           error: 'Lỗi máy chủ hoặc API Gemini.',
           type: 'basic',
