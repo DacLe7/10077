@@ -35,7 +35,7 @@ export default function ChatbotWidget() {
     setLoading(true);
     
     try {
-      const res = await fetch('/.netlify/functions/dialogflow-service', {
+      const res = await fetch('/api/dialogflow', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
