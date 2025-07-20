@@ -34,7 +34,7 @@ router.post('/dialogflow', async (req, res) => {
     const sessionClient = new v2beta1.SessionsClient({ credentials });
 
     const { message, sessionId = 'default-session' } = req.body;
-    const sessionPath = sessionClient.projectAgentSessionPath(projectId, sessionId);
+    const sessionPath = `projects/${projectId}/agent/sessions/${sessionId}`;
     const request = {
       session: sessionPath,
       queryInput: {
