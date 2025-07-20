@@ -24,3 +24,10 @@ dist-ssr
 *.sw?
 
 .config/
+
+# Local Netlify folder
+.netlify
+
+# Credentials
+saasbot-credentials.json
+netlify/saasbot-credentials.json

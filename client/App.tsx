@@ -24,6 +24,9 @@ const App = () => (
         <BrowserRouter>
           <Header />
           <Routes>
+            {/* Thêm route này đầu tiên để bỏ qua Netlify Functions */}
+            <Route path="/.netlify/functions/*" element={null} />
+            
             <Route path="/" element={<Index />} />
             <Route path="/product/:id" element={<ProductDetail />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
