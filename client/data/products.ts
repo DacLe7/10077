@@ -10,6 +10,7 @@ export interface Product {
   tags: string[];
   category: string;
   image_url: string;
+  images?: string[]; // Thêm trường images (mảng ảnh)
 }
 
 export const products: Product[] = [
@@ -24,7 +25,15 @@ export const products: Product[] = [
     emotions: [0.5, 1.0],
     tags: ["energizing", "fresh", "mood_boost"],
     category: "citrus",
-    image_url: "https://tuscanycandle.com/cdn/shop/files/April-4.jpg?v=1698869584&width=1000"
+    image_url: "https://tuscanycandle.com/cdn/shop/files/April-4.jpg?v=1698869584&width=1000",
+    images: [
+      // Ảnh chính (hiện ở trang Bộ sưu tập nến thơm)
+      "https://tuscanycandle.com/cdn/shop/files/April-4.jpg?v=1698869584&width=1000",
+      // Ảnh thumbnail 1 (có thể thay đổi riêng biệt)
+      "https://artofscent.vn/wp-content/uploads/2022/07/nen-thom-lavender-huong-thom-oai-huong-art-of-scent-1.jpg",
+      // Ảnh thumbnail 2 (có thể thay đổi riêng biệt)
+      "https://topquatang.vn/wp-content/uploads/2021/12/Hop-Qua-Nen-Thom-Hoa-Kho-Trang-Tri-CITTA-3.jpg"
+    ]
   },
   {
     id: 2,
@@ -37,7 +46,12 @@ export const products: Product[] = [
     emotions: [0.0, 0.5],
     tags: ["cozy", "stress_relief", "relaxing"],
     category: "vanilla",
-    image_url: "https://www.nestnewyork.com/cdn/shop/files/NESTNY_FINE_PO_MAV_CAN_CL-1_white-background.jpg?v=1689587533"
+    image_url: "https://www.nestnewyork.com/cdn/shop/files/NESTNY_FINE_PO_MAV_CAN_CL-1_white-background.jpg?v=1689587533",
+    images: [
+      "https://www.nestnewyork.com/cdn/shop/files/NESTNY_FINE_PO_MAV_CAN_CL-1_white-background.jpg?v=1689587533",
+      "https://artofscent.vn/wp-content/uploads/2022/07/nen-thom-lavender-huong-thom-oai-huong-art-of-scent-1.jpg",
+      "https://topquatang.vn/wp-content/uploads/2021/12/Hop-Qua-Nen-Thom-Hoa-Kho-Trang-Tri-CITTA-3.jpg"
+    ]
   },
   {
     id: 3,
@@ -50,7 +64,12 @@ export const products: Product[] = [
     emotions: [0.0, 0.5],
     tags: ["romantic", "luxury", "relaxing"],
     category: "floral",
-    image_url: "https://www.nestnewyork.com/cdn/shop/files/NESTNY_CORE_INJ_CAN_3W_SPEC-1_white-background.jpg?v=1701725545"
+    image_url: "https://www.nestnewyork.com/cdn/shop/files/NESTNY_CORE_INJ_CAN_3W_SPEC-1_white-background.jpg?v=1701725545",
+    images: [
+      "https://www.nestnewyork.com/cdn/shop/files/NESTNY_CORE_INJ_CAN_3W_SPEC-1_white-background.jpg?v=1701725545",
+      "https://artofscent.vn/wp-content/uploads/2022/07/nen-thom-lavender-huong-thom-oai-huong-art-of-scent-1.jpg",
+      "https://topquatang.vn/wp-content/uploads/2021/12/Hop-Qua-Nen-Thom-Hoa-Kho-Trang-Tri-CITTA-3.jpg"
+    ]
   },
   {
     id: 4,
@@ -63,7 +82,12 @@ export const products: Product[] = [
     emotions: [-0.5, 0.0],
     tags: ["sleep", "stress_relief", "relaxing", "meditation"],
     category: "lavender",
-    image_url: "https://as2.ftcdn.net/v2/jpg/13/05/02/89/1000_F_1305028907_mnXbAAwuGHnq2rWoY5Wc4S3corLRyUGe.jpg"
+    image_url: "https://as2.ftcdn.net/v2/jpg/13/05/02/89/1000_F_1305028907_mnXbAAwuGHnq2rWoY5Wc4S3corLRyUGe.jpg",
+    images: [
+      "https://as2.ftcdn.net/v2/jpg/13/05/02/89/1000_F_1305028907_mnXbAAwuGHnq2rWoY5Wc4S3corLRyUGe.jpg",
+      "https://artofscent.vn/wp-content/uploads/2022/07/nen-thom-lavender-huong-thom-oai-huong-art-of-scent-1.jpg",
+      "https://topquatang.vn/wp-content/uploads/2021/12/Hop-Qua-Nen-Thom-Hoa-Kho-Trang-Tri-CITTA-3.jpg"
+    ]
   },
   {
     id: 5,
@@ -76,7 +100,12 @@ export const products: Product[] = [
     emotions: [-0.5, 0.0],
     tags: ["meditation", "spiritual", "stress_relief"],
     category: "fresh",
-    image_url: "https://kalamazoocandle.com/cdn/shop/products/SandalwoodJarcopy.jpg?v=1691697667&width=1780"
+    image_url: "https://kalamazoocandle.com/cdn/shop/products/SandalwoodJarcopy.jpg?v=1691697667&width=1780",
+    images: [
+      "https://kalamazoocandle.com/cdn/shop/products/SandalwoodJarcopy.jpg?v=1691697667&width=1780",
+      "https://artofscent.vn/wp-content/uploads/2022/07/nen-thom-lavender-huong-thom-oai-huong-art-of-scent-1.jpg",
+      "https://topquatang.vn/wp-content/uploads/2021/12/Hop-Qua-Nen-Thom-Hoa-Kho-Trang-Tri-CITTA-3.jpg"
+    ]
   },
   {
     id: 6,
@@ -89,7 +118,12 @@ export const products: Product[] = [
     emotions: [-0.5, 0.0],
     tags: ["focus", "fresh", "energizing"],
     category: "fresh",
-    image_url: "https://www.pureintegrity.com/media/ss_size1/peppermint-16.jpg"
+    image_url: "https://www.pureintegrity.com/media/ss_size1/peppermint-16.jpg",
+    images: [
+      "https://www.pureintegrity.com/media/ss_size1/peppermint-16.jpg",
+      "https://artofscent.vn/wp-content/uploads/2022/07/nen-thom-lavender-huong-thom-oai-huong-art-of-scent-1.jpg",
+      "https://topquatang.vn/wp-content/uploads/2021/12/Hop-Qua-Nen-Thom-Hoa-Kho-Trang-Tri-CITTA-3.jpg"
+    ]
   },
   {
     id: 7,
@@ -102,7 +136,12 @@ export const products: Product[] = [
     emotions: [0.0, 0.0],
     tags: ["relaxing", "natural", "stress_relief"],
     category: "floral",
-    image_url: "https://www.lafco.com/mm5/graphics/00000001/2/ClassicCandle_480x480.jpg"
+    image_url: "https://www.lafco.com/mm5/graphics/00000001/2/ClassicCandle_480x480.jpg",
+    images: [
+      "https://www.lafco.com/mm5/graphics/00000001/2/ClassicCandle_480x480.jpg",
+      "https://artofscent.vn/wp-content/uploads/2022/07/nen-thom-lavender-huong-thom-oai-huong-art-of-scent-1.jpg",
+      "https://topquatang.vn/wp-content/uploads/2021/12/Hop-Qua-Nen-Thom-Hoa-Kho-Trang-Tri-CITTA-3.jpg"
+    ]
   },
   {
     id: 8,
@@ -115,7 +154,12 @@ export const products: Product[] = [
     emotions: [0.0, 0.0],
     tags: ["natural", "cozy", "spiritual"],
     category: "fresh",
-    image_url: "https://chus.vn/images/detailed/208/1647352595_10359-14-f1_w767_h1105.jpg"
+    image_url: "https://chus.vn/images/detailed/208/1647352595_10359-14-f1_w767_h1105.jpg",
+    images: [
+      "https://chus.vn/images/detailed/208/1647352595_10359-14-f1_w767_h1105.jpg",
+      "https://artofscent.vn/wp-content/uploads/2022/07/nen-thom-lavender-huong-thom-oai-huong-art-of-scent-1.jpg",
+      "https://topquatang.vn/wp-content/uploads/2021/12/Hop-Qua-Nen-Thom-Hoa-Kho-Trang-Tri-CITTA-3.jpg"
+    ]
   },
   {
     id: 9,
@@ -128,6 +172,11 @@ export const products: Product[] = [
     emotions: [0.0, 0.0],
     tags: ["meditation", "spiritual", "natural"],
     category: "floral",
-    image_url: "https://www.grandcandles.com/cdn/shop/files/RosePetalsSoyCandle-CLR-Burning.jpg?v=1737591868&width=800"
+    image_url: "https://www.grandcandles.com/cdn/shop/files/RosePetalsSoyCandle-CLR-Burning.jpg?v=1737591868&width=800",
+    images: [
+      "https://www.grandcandles.com/cdn/shop/files/RosePetalsSoyCandle-CLR-Burning.jpg?v=1737591868&width=800",
+      "https://artofscent.vn/wp-content/uploads/2022/07/nen-thom-lavender-huong-thom-oai-huong-art-of-scent-1.jpg",
+      "https://topquatang.vn/wp-content/uploads/2021/12/Hop-Qua-Nen-Thom-Hoa-Kho-Trang-Tri-CITTA-3.jpg"
+    ]
   }
 ]; 

@@ -22,6 +22,7 @@ import {
   Heart,
 } from "lucide-react";
 import { useState, useRef, useEffect } from 'react';
+import MusicAlbumRow from "@/components/MusicAlbumRow";
 
 export default function Index() {
   // State cho chat popup
@@ -67,6 +68,8 @@ export default function Index() {
       {/* <Header /> đã được chuyển lên App.tsx, tránh lặp lại */}
       <HeroSection />
       <SocialProofSection />
+      {/* Dãy album nhạc */}
+      <MusicAlbumRow />
       <ProductGrid />
       {/* Phụ Kiện Section */}
       <AccessoriesSection />
@@ -75,7 +78,6 @@ export default function Index() {
       {/* Hướng Dẫn Section */}
       <GuideSection />
       {/* Đa Dạng Kích Thước Section */}
-      <PlantSizesSection />
       {/* Về Chúng Tôi Section */}
       <AboutSection />
       {/* Review Section */}

@@ -3,7 +3,7 @@ import { products } from "../data/products";
 import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
 import { motion, useAnimation, useInView } from "framer-motion";
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect, useCallback, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight, ShoppingCart } from "lucide-react";
 import { useCart } from "../contexts/CartContext";
@@ -78,6 +78,41 @@ export default function ProductGrid() {
                 useEffect(() => {
                   if (isInView) controls.start("visible");
                 }, [isInView, controls]);
+
+                // State cho hover chuyển ảnh
+                const [hovered, setHovered] = useState(false);
+                const [imgIdx, setImgIdx] = useState(0);
+                const [isFading, setIsFading] = useState(false);
+                const images = product.images && product.images.length > 0 ? product.images : [product.image_url];
+                // Xử lý tự động chuyển ảnh khi hover
+                useEffect(() => {
+                  let interval: any;
+                  if (hovered && images.length > 1) {
+                    // Nếu lần đầu hover và đang ở ảnh đầu tiên, chuyển ngay sang ảnh thứ 2
+                    if (imgIdx === 0) {
+                      setIsFading(true);
+                      setTimeout(() => {
+                        setImgIdx(1);
+                        setIsFading(false);
+                      }, 300);
+                    }
+                    let localIdx = imgIdx === 0 ? 1 : imgIdx;
+                    interval = setInterval(() => {
+                      setIsFading(true);
+                      setTimeout(() => {
+                        localIdx = (localIdx + 1) % images.length;
+                        setImgIdx(localIdx);
+                        setIsFading(false);
+                      }, 300);
+                    }, 1300);
+                  } else {
+                    setImgIdx(0);
+                  }
+                  return () => {
+                    clearInterval(interval);
+                  };
+                }, [hovered, images.length]);
+
                 return (
                   <motion.div
                     key={product.id}
@@ -100,11 +135,16 @@ export default function ProductGrid() {
                     className="embla__slide min-w-[220px] max-w-[220px] md:min-w-[260px] md:max-w-[260px] flex-shrink-0 px-2"
                   >
                     <Card className="border-none shadow-none bg-white">
-                      <div className="rounded-lg overflow-hidden bg-gray-100">
+                      <div
+                        className="rounded-lg overflow-hidden bg-gray-100"
+                        onMouseEnter={() => setHovered(true)}
+                        onMouseLeave={() => setHovered(false)}
+                        style={{ cursor: images.length > 1 ? 'pointer' : undefined }}
+                      >
                         <img
-                          src={product.image_url}
+                          src={images[imgIdx]}
                           alt={product.name}
-                          className="w-full h-56 object-cover"
+                          className={`w-full h-56 object-cover transition-opacity duration-300 ${isFading ? 'opacity-0' : 'opacity-100'}`}
                         />
                       </div>
                       <CardContent className="flex flex-col items-center py-3 px-0">

@@ -16,6 +16,10 @@ export default function ProductDetail() {
   
   const product = products.find((p) => p.id === Number(id));
 
+  // Thêm state cho ảnh chính và hiệu ứng fade
+  const [mainImage, setMainImage] = useState(product?.images?.[0] || product?.image_url);
+  const [isFading, setIsFading] = useState(false);
+
   if (!product) {
     return (
       <div className="max-w-2xl mx-auto py-20 text-center">
@@ -49,6 +53,16 @@ export default function ProductDetail() {
     }
   };
 
+  // Hàm đổi ảnh với hiệu ứng fade
+  const handleChangeImage = (img: string) => {
+    if (img === mainImage) return;
+    setIsFading(true);
+    setTimeout(() => {
+      setMainImage(img);
+      setIsFading(false);
+    }, 200); // thời gian fade-out
+  };
+
   return (
     <div className="bg-white min-h-screen py-10">
       <div className="max-w-5xl mx-auto px-4">
@@ -56,13 +70,32 @@ export default function ProductDetail() {
           <ArrowLeft className="w-4 h-4 mr-2" /> Quay lại
         </Button>
         <div className="flex flex-col md:flex-row gap-10 items-start">
-          {/* Image */}
-          <div className="bg-gray-100 rounded-lg p-6 flex items-center justify-center w-full md:w-1/2">
+          {/* Image + Thumbnails */}
+          <div className="bg-gray-100 rounded-lg p-6 flex flex-col items-center justify-center w-full md:w-1/2">
             <img
-              src={product.image_url}
+              src={mainImage}
               alt={product.name}
-              className="w-full max-w-xs h-auto object-contain rounded-lg shadow-md mx-auto"
+              className={`w-full max-w-xs h-auto object-contain rounded-lg shadow-md mx-auto mb-4 transition-opacity duration-300 ${isFading ? 'opacity-0' : 'opacity-100'}`}
             />
+            {/* Thumbnails */}
+            {product.images && product.images.length > 1 && (
+              <div className="flex gap-2 mt-2">
+                {product.images.map((img, idx) => (
+                  <button
+                    key={img}
+                    onClick={() => handleChangeImage(img)}
+                    className={`border rounded-lg p-1 bg-white ${mainImage === img ? 'border-primary ring-2 ring-primary' : 'border-gray-200'}`}
+                    style={{ width: 60, height: 60 }}
+                  >
+                    <img
+                      src={img}
+                      alt={`thumb-${idx}`}
+                      className="object-contain w-full h-full rounded"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
           {/* Info */}
           <div className="w-full md:w-1/2">
